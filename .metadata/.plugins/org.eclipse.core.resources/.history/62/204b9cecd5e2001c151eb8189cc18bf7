@@ -1,0 +1,14 @@
+package com.jafa.config;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class RootConfigTest extends AppTest {
+
+	@Test
+	public void dataSourceTest() {
+		
+	}
+
+}

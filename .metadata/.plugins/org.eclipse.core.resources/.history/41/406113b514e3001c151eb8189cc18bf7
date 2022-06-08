@@ -1,0 +1,11 @@
+package com.jafa.mapper;
+
+import java.util.List;
+
+import com.jafa.model.Board;
+
+public interface BoardMapper {
+
+	List<Board> getList();
+	
+}

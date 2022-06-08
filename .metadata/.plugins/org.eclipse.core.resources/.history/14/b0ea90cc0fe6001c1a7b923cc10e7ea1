@@ -1,0 +1,41 @@
+package com.jafa.dao;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+
+import com.jafa.config.RootConfig;
+import com.jafa.config.ServletConfig;
+import com.jafa.dto.Board;
+
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = {RootConfig.class, ServletConfig.class})
+@WebAppConfiguration
+
+public class PagingTest {
+
+	@Autowired
+	BoardMapper mapper;
+	
+	
+	@Test
+	public void insertData() {
+		
+		for(int i = 1; i <= 212; i++) {
+		
+		Board board = new Board();
+		board.setTitle("제목 : jsp 연습중입니다유" + i);
+		board.setContents("내용 : 자바 테스트중입니다유" + i);
+		board.setWriter("침펭단" + i);
+		mapper.insert(board);
+		
+		}
+	}
+
+}

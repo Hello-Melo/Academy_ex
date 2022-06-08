@@ -1,0 +1,11 @@
+package com.jafa.mapper;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.jafa.config.AppTest;
+
+public class DataInsert extends AppTest{
+	
+	@Autowired
+	BoardMapper mapper;
+}

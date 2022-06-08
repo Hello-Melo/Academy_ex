@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jafa.mapper.BoardMapper">
+	<select id="getList" resultType="com.jafa.model.Board">
+			select * from board_tbl limit #{pageStart}, #{perPageNum};
+	</select>
+	
+	<select id="totalCount" resultType="Integer">
+		select count(*) from board_tbl;
+	</select>
+	
+	
+	<select id="findById" resultType="com.jafa.model.Board">
+		select * from board_tbl where bno=#{bno}
+	</select>
+	
+	<insert id="insert">
+			insert into board_tbl(title, contents, writer) value(#{title},
+		#{contents}, #{writer});
+		<selectKey keyProperty="bno" order="AFTER" resultType="long">
+			select last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<delete id="delete">
+		delete from board_tbl where bno=#{bno}
+	</delete>
+	
+	<update id="update">
+			update board_tbl set 
+				title = #{title},
+				contents = #{contents},
+				writer = #{writer},
+				updateDate = now()
+		where bno = #{bno};
+	</update>
+	
+</mapper>

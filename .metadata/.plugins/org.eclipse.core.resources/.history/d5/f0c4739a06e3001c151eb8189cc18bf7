@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Hello</title>
+<meta http-equiv="content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+Hello<Br>
+<a href="/hello">hello</a>
+
+
+<p th:text ="'안녕하세요' + ${data}" > 안녕하세요 . 손닝 </p>
+
+</body>
+</html>

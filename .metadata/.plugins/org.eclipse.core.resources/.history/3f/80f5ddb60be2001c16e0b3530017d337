@@ -1,0 +1,14 @@
+package com.jafa.dao;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class PagingTest {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

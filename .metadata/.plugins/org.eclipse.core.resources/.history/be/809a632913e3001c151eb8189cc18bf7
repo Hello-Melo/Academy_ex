@@ -1,0 +1,10 @@
+package com.jafa.model;
+
+public class pageMaker {
+
+	private Criteria criteria;
+	private int startPage;
+	private int endPage;
+	private int totalCount;
+	
+}

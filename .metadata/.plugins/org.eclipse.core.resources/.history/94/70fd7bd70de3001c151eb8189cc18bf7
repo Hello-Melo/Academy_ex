@@ -1,0 +1,21 @@
+package com.jafa.model;
+
+import java.time.LocalDateTime;
+
+import lombok.AllArgs
+import lombok.NoArgsConstructor;Constructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter @NoArgsConstructor
+@Setter @AllArgsConstructor
+@ToString
+public class Board {
+	private long bno;
+	private String title;
+	private String contents;
+	private String writer;
+	private LocalDateTime regDate;
+	private LocalDateTime updateDate;
+}

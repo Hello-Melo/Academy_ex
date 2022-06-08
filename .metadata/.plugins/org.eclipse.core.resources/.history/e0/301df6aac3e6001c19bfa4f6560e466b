@@ -1,0 +1,8 @@
+package com.jafa.config;
+
+import org.junit.runner.RunWith;
+
+@RunWith(spring45)
+public class TestApp {
+
+}

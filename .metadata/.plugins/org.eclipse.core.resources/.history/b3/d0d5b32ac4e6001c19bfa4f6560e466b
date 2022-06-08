@@ -1,0 +1,25 @@
+package com.jafa.config;
+
+import javax.sql.DataSource;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+
+@Configuration
+public class RootConfig {
+	
+	@Bean
+	DataSource dataSource() {
+		HikariConfig config = new HikariConfig();
+		config.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
+		config.setJdbcUrl("jdbc:log4jdbc:mysql://localhost/board_ex");
+		config.setUsername("root");
+		config.setPassword("1234");
+		return new HikariDataSource(config);
+		
+	}
+
+}

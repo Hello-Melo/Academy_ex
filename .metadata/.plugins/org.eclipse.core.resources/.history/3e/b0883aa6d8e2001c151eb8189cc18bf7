@@ -1,0 +1,9 @@
+package com.jafa.mapper;
+
+import java.sql.Date;
+
+public interface testMapper {
+
+	
+	Date mytime();
+}

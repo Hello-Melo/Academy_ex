@@ -1,0 +1,20 @@
+package com.jafa.model;
+
+public class pageMaker {
+
+	private Criteria criteria;
+	private int startPage;
+	private int endPage;
+	private int totalCount;
+	private boolean perv;
+	private boolean next;
+	private int displayPageNum = 10;
+	
+	public pageMaker(Criteria criteria, int totanCount) {
+		endPage = (int) (Math.ceil(criteria.getPage() / (double) displayPageNum) * displayPageNum);
+		
+		
+	}
+	
+	
+}

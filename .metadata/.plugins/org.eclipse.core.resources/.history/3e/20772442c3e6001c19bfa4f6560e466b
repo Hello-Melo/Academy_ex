@@ -1,0 +1,24 @@
+package com.jafa.config;
+
+import javax.sql.DataSource;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.zaxxer.hikari.HikariConfig;
+
+@Configuration
+public class RootConfig {
+	
+	@Bean
+	DataSource dataSource() {
+		HikariConfig config = new HikariConfig();
+		config.setDriverClassName(null);
+		config.setJdbcUrl(null);
+		config.setUsername(null);
+		config.setPassword(null);
+		
+		
+	}
+
+}
