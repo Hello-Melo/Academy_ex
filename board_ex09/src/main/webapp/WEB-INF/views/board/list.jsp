@@ -5,6 +5,7 @@
 	<div class="jumbotron">
 			<h2>지유 게시판</h2>
 			<div class="listData">
+				<input type="hidden" name="bno" id ="bno" value="">
 				<input type="hidden" value="${pageMaker.criteria.page}" name="page" id="page">
 				<input type="hidden" value="${pageMaker.criteria.type}" name="type" id="type">
 				<input type="hidden" value="${pageMaker.criteria.keyword}" name="keyword" id="keyword">
@@ -52,7 +53,7 @@
 			<c:forEach items="${list}" var="b">
 				<tr>
 					<td>${b.bno}</td>
-					<td> <a href="get?bno=${b.bno}&page=${pageMaker.criteria.page}&type=${pageMaker.criteria.type}&keyword=${pageMaker.criteria.keyword}">
+					<td> <a class="get" href="${b.bno}">
 							${b.title}
 							</a>
 					</td>
@@ -95,11 +96,29 @@
  		$('.pagination a').on('click', function (e) {
  			e.preventDefault();
  			$('.listData').find('#page').val($(this).attr('href'));
+ 			
+ 			if(listForm.find('input[name="keyword"]').val()==''){
+ 				listForm.find('input[name="keyword"]').remove();
+ 				listForm.find('select[name="type"]').remove();
+ 			}
+ 		
  			listForm.append($('#page'));
 			listForm.submit();
  			
-		})
+		});
 
+ 		$('.get').on('click', function (e) {
+ 			e.preventDefault();
+			let bno = $(this).attr('href');
+			$('#bno').val(bno);
+			listForm.append($('#bno'));
+			listForm.append($('#page'));
+ 			listForm.attr("action", "get?bno="+bno)
+ 			listForm.submit();
+			
+		})
+ 		
+ 		
 	})
  
  
