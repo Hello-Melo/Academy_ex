@@ -1,0 +1,15 @@
+package com.jafa.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.jafa.mapper.BoardMapper;
+
+public interface BoardService extends BoardMapper {
+	
+	
+	
+
+
+}

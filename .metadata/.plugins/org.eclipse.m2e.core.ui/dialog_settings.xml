@@ -2,6 +2,8 @@
 <section name="Workbench">
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="board_ex09"/>
+			<item value="board_ex08"/>
 			<item value="board_ex07"/>
 			<item value="board_ex06"/>
 			<item value="board_ex05"/>
@@ -15,12 +17,12 @@
 			<item value="xml_spring02"/>
 			<item value="board07"/>
 			<item value="board06"/>
-			<item value="xml_spring01"/>
-			<item value="xml_Spring"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="board_ex09"/>
+			<item value="board_ex08"/>
 			<item value="board_ex07"/>
 			<item value="board_ex06"/>
 			<item value="board_ex05"/>
@@ -34,8 +36,6 @@
 			<item value="xml_spring02"/>
 			<item value="board07"/>
 			<item value="board06"/>
-			<item value="xml_spring01"/>
-			<item value="xml_Spring"/>
 		</list>
 		<list key="version">
 			<item value="0.0.1-SNAPSHOT"/>

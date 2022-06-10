@@ -63,7 +63,7 @@ public class BoardController {
 		}
 	
 	@GetMapping("/update")
-	public String modify() {
+	public String modifyForm() {
 		return "board/update";
 	}
 	

@@ -1,0 +1,33 @@
+package com.jafa.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.jafa.model.Board;
+import com.jafa.model.Criteria;
+import com.jafa.model.pageMaker;
+import com.jafa.service.BoardServiceImpl;
+
+@Controller
+@RequestMapping("/board/")
+public class BoardController {
+
+	@Autowired
+	BoardServiceImpl service;
+	
+	@GetMapping("/list")
+	public String getList(Criteria criteria, int totalCount, Model model) {
+		pageMaker maker = new pageMaker(criteria, totalCount)
+		
+		List<Board> list = service.getList();
+		model.addAttribute("list", list);
+		return "board/list";
+	}
+	
+	
+}

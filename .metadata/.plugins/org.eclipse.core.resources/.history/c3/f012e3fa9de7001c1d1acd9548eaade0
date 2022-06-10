@@ -1,0 +1,10 @@
+package com.jafa.model;
+
+public class Criteria {
+	
+	private int page;
+	private int perPageNum;
+	
+	
+
+}

@@ -1,0 +1,54 @@
+package com.jafa.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.jafa.mapper.BoardMapper;
+import com.jafa.model.Board;
+
+@Service
+public class BoardServiceImpl implements BoardService{
+	
+	@Autowired
+	BoardMapper mapper;
+
+	@Override
+	public List<Board> getList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Board findByBno(Long bno) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void insert(Board board) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(Board board) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Long bno) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int totalCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+
+}
