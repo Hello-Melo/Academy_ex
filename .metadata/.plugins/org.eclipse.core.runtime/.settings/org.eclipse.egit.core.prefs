@@ -1,5 +1,5 @@
-GitRepositoriesView.GitDirectories=C\:\\Users\\s\\git\\repository\\.git;
-GitRepositoriesView.GitDirectories.relative=C\:\\Users\\s\\git\\repository\\.git;
+GitRepositoriesView.GitDirectories=C\:\\Users\\s\\git\\repository\\.git;C\:\\Users\\s\\eclipse-workspace3\\.git;
+GitRepositoriesView.GitDirectories.relative=C\:\\Users\\s\\git\\repository\\.git;.git;
 RepositoryGroups.uuids=
 core_autoIgnoreDerivedResources=false
 eclipse.preferences.version=1
