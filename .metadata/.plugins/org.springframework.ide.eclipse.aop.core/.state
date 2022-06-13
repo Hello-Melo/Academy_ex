@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
-<aop-project name="xml_spring01"/>
-<aop-project name="board_ex07"/>
-<aop-project name="board05"/>
-<aop-project name="board_ex01"/>
-<aop-project name="board_ex03"/>
-<aop-project name="board_ex05"/>
 <aop-project name="board_ex09"/>
-<aop-project name="xml_Spring"/>
+<aop-project name="board_ex07"/>
+<aop-project name="board_ex10"/>
 <aop-project name="board_ex"/>
-<aop-project name="xml_spring02"/>
-<aop-project name="board_ex06"/>
-<aop-project name="board_ex04"/>
-<aop-project name="board_ex02"/>
 <aop-project name="board_ex08"/>
 </aop-reference-model>

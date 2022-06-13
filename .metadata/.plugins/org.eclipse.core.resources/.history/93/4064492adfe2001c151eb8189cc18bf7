@@ -1,8 +1,0 @@
-package com.jafa.model;
-
-public class pageMaker {
-
-	Criteria criteria;
-	private int 
-	
-}

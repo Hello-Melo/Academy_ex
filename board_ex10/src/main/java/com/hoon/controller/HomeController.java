@@ -12,4 +12,17 @@ public class HomeController {
 		return "Welcome";
 	}
 	
+	@GetMapping("/admin/list")
+	public String admin() {
+		System.out.println("컨트롤러 실행  :  Admin");
+		return "admin";
+	}
+	
+	@GetMapping("/admin/aa")
+	public String aa() {
+		System.out.println("컨트롤러 실행  : aa");
+		return "aa";
+		
+	}
+	
 }

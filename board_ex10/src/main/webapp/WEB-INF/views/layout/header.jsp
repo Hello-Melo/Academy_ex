@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
  <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+ <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+ <%@ taglib uri = "http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,10 +31,13 @@
           <a class="nav-link active" aria-current="page" href="${contextPath}/board/list">게시판</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link" href="?lang=en">영어</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+          <a class="nav-link" href="?lang=ko">한국어</a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link" href="${contextPath }/board/register">글쓰기</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">

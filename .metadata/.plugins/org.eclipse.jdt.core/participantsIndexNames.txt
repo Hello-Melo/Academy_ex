@@ -5,6 +5,8 @@ C:\Users\s\eclipse-workspace3\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsea
 \Test_Jsp\src\main\java
 C:\Users\s\eclipse-workspace3\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\473499683.index
 \board_ex08\src\main\java
+C:\Users\s\eclipse-workspace3\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2951869567.index
+\board_ex10\src\main\java
 C:\Users\s\eclipse-workspace3\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4146070266.index
 \board_ex07\src\main\java
 C:\Users\s\eclipse-workspace3\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2139342482.index
@@ -69,8 +71,12 @@ C:\Users\s\eclipse-workspace3\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsea
 \board04\src\main\java
 C:\Users\s\eclipse-workspace3\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1142711766.index
 \board07\src\main\java
+C:\Users\s\eclipse-workspace3\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2598128385.index
+\board_ex10\src\main\java
 C:\Users\s\eclipse-workspace3\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1507046516.index
 \board05\src\main\java
+C:\Users\s\eclipse-workspace3\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\746796175.index
+\board_ex10\src\main\java
 C:\Users\s\eclipse-workspace3\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2544603390.index
 \board01\src\main\java
 C:\Users\s\eclipse-workspace3\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1923964915.index
