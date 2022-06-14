@@ -1,7 +1,0 @@
-package com.jafa.config;
-
-import org.junit.runner.RunWith;
-
-public class TestApp {
-
-}

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<aop-reference-model>
-<aop-project name="board_ex09"/>
-<aop-project name="board_ex07"/>
-<aop-project name="board_ex10"/>
-<aop-project name="board_ex"/>
-<aop-project name="board_ex08"/>
-</aop-reference-model>

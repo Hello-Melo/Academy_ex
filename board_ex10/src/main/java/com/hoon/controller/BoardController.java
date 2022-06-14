@@ -25,33 +25,28 @@ public class BoardController {
 	BoardServiceImpl service;
 
 	Board board = new Board();
-	
+
 	@GetMapping("/list")
 	public String getList(Model model) {
 		List<Board> list = service.getList();
 		model.addAttribute("list", list);
 		return "board/list";
 	}
-	
+
 	@GetMapping("/register")
 	public String registerForm(Board board, Model model) {
-		
+
 		return "board/register";
 	}
-	
+
 	@PostMapping("/register")
 	public String register(Board board, Errors errors, RedirectAttributes rtts) {
 		new BoardValidatior().validate(board, errors);
-		if(errors.hasErrors()) {
-			
+		if (errors.hasErrors()) {
+
 			return "board/register";
 		}
-		
-		
-		System.out.println("제목 : " + board.getTitle());
-		System.out.println("내용 : " + board.getContents());
-		System.out.println("작성자 : " + board.getWriter());
-		
+
 		return "redirect:/";
 	}
 }
