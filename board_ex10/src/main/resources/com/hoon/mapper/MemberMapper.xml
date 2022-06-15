@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hoon.mapper.MemberMapper">
+				<select id="findAll" resultType="com.hoon.model.Member">
+					select * from member_tbl;
+				</select>
+			
+				<insert id="insert">
+					insert into member_tbl(userName, email, password) value(#{userName},
+					#{email}, #{password});
+					<selectKey keyProperty="id" order="AFTER" resultType="long">
+						select last_insert_id()
+					</selectKey>
+				</insert>
+			
+				<update id="update">
+					update member_tbl set
+					userName = #{userName},
+					email = #{email},
+					password = #{password}
+					where id = #{id}
+				</update>
+			
+				<select id="findById" resultType="com.hoon.model.Member">
+					select * from member_tbl where id=#{id}
+				</select>
+			
+				<delete id="delete">
+					delete from member_tbl where id=#{id}
+				</delete>
+
+				<select id="findByEmail" resultType="com.hoon.model.Member">
+					select * from member_tbl where email = #{email}; 
+				</select>
+
+</mapper>

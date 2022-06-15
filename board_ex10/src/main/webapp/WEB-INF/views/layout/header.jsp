@@ -36,8 +36,14 @@
         <li class="nav-item">
           <a class="nav-link" href="?lang=ko">한국어</a>
         </li>
-           <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" href="${contextPath }/board/register">글쓰기</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="${contextPath }/member/register">회원가입</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="${contextPath }/member/list">회원목록</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">

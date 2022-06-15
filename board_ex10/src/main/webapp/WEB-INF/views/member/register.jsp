@@ -7,7 +7,7 @@
 		</div>
 		
 
-		<form:form action="register" method="post" modelAttribute="member">
+		<form:form action="register"  modelAttribute="member">
 			<div>
 				이름 : <form:input path="userName"/>
 				<form:errors path="userName" />
@@ -15,13 +15,14 @@
 			<div>
 				이메일 : <form:input path="email"/>
 				<form:errors path="email" />
+				
 			</div>
 			<div>
-				비밀번호 : <form:input path="password" type="password" />
+				비밀번호 : <form:input path="password" type="text" />
 				<form:errors path="password" />
 			</div>
 			<div>
-				비밀번호확인 : <form:input path="confirmPassword" type="password" />
+				비밀번호확인 : <form:input path="confirmPassword" type="text" />
 				<form:errors path="confirmPassword" />
 			</div>
 		<button>회원가입</button>

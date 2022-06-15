@@ -35,18 +35,15 @@ public class BoardController {
 
 	@GetMapping("/register")
 	public String registerForm(Board board, Model model) {
-
 		return "board/register";
 	}
 
 	@PostMapping("/register")
 	public String register(Board board, Errors errors, RedirectAttributes rtts) {
 		new BoardValidatior().validate(board, errors);
-		if (errors.hasErrors()) {
-
-			return "board/register";
-		}
-
+			if (errors.hasErrors()) {
+				return "board/register";
+			}
 		return "redirect:/";
 	}
 }
