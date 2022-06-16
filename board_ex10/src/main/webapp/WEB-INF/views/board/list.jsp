@@ -88,7 +88,7 @@
 		  </ul>
 		</form>
 
-		<a href="${contextPath }/board/register" class="btn btn-secondary">글쓰기</a>
+			<a href="${contextPath }/board/register" class="btn btn-secondary">글쓰기</a>
 		
 		</div>
 

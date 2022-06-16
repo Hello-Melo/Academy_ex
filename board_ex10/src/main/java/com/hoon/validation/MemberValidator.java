@@ -35,6 +35,5 @@ public class MemberValidator implements Validator {
 			return;
 		}
 	}
-	
 
 }

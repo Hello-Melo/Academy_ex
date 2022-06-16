@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hoon.model.Board;
+import com.hoon.model.Criteria;
+import com.hoon.model.PageMaker;
 import com.hoon.service.BoardService;
 import com.hoon.service.BoardServiceImpl;
 import com.hoon.validation.BoardValidatior;
@@ -27,8 +29,11 @@ public class BoardController {
 	Board board = new Board();
 
 	@GetMapping("/list")
-	public String getList(Model model) {
-		List<Board> list = service.getList();
+	public String getList(Criteria criteria, Model model) {
+		PageMaker maker = new PageMaker(criteria, service.totalCoutnt(criteria));
+		
+		List<Board> list = service.getList(criteria);
+		model.addAttribute("pageMaker", maker);
 		model.addAttribute("list", list);
 		return "board/list";
 	}
@@ -46,4 +51,22 @@ public class BoardController {
 			}
 		return "redirect:/";
 	}
+	
+	@GetMapping("/get")
+	public String get(Long bno, Model model) {
+		model.addAttribute("board", service.findByBno(bno));
+		return "board/get";
+	}
+	
+	@GetMapping("/update")
+	public String updateForm() {
+		return "board/update";
+	}
+	
+	@PostMapping("/update")
+	public String update(Board board, RedirectAttributes rtts) {
+		service.update(board);
+		return "redirect:/board/list";
+	}
+	
 }

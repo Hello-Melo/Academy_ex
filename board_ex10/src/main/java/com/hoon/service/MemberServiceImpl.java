@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hoon.mapper.MemberMapper;
+import com.hoon.model.Criteria;
 import com.hoon.model.Member;
 
 @Service
@@ -14,10 +15,9 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	MemberMapper mapper;
 	
-	
 	@Override
-	public List<Member> findAll() {
-		return mapper.findAll();
+	public List<Member> findAll(Criteria criteria) {
+		return mapper.findAll(criteria);
 	}
 
 	@Override
@@ -41,8 +41,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int totalCount() {
-		return mapper.totalCount();
+	public int totalCount(Criteria criteria) {
+		return mapper.totalCount(criteria);
 	}
 
 

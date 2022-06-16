@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.hoon.mapper.BoardMapper;
 import com.hoon.model.Board;
+import com.hoon.model.Criteria;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -15,8 +16,8 @@ public class BoardServiceImpl implements BoardService {
 	BoardMapper mapper;
 	
 	@Override
-	public List<Board> getList() {
-		return mapper.getList();
+	public List<Board> getList(Criteria criteria) {
+		return mapper.getList(criteria);
 	}
 
 	@Override
@@ -39,9 +40,11 @@ public class BoardServiceImpl implements BoardService {
 		mapper.delete(bno);
 	}
 
+
 	@Override
-	public void totalCount() {
-		mapper.totalCount();
+	public int totalCoutnt(Criteria criteria) {
+		return mapper.totalCount(criteria);
 	}
 
+	
 }

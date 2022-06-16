@@ -1,5 +1,7 @@
 package com.hoon.model;
 
+import java.time.LocalDateTime;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
@@ -33,6 +35,7 @@ public class Member {
 	 @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,15}$", message = "비밀번호는 숫자, 문자, 특수문자를 포함한 8~15자리 이내여야합니다.")
 	private String password;
 	private String confirmPassword;
-	
+	private LocalDateTime regDate;
+	private LocalDateTime updateDate;
 	
 }

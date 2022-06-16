@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hoon.model.Board;
+import com.hoon.model.Criteria;
 import com.hoon.model.Member;
+import com.hoon.model.PageMaker;
 import com.hoon.service.BoardService;
 import com.hoon.service.MemberService;
 import com.hoon.validation.MemberValidator;
@@ -32,9 +34,11 @@ public class MemberController {
 	}
 	
 	@GetMapping("/list")
-	public String findAll(Model model) {
-		List<Member> list = service.findAll();
+	public String findAll(Criteria criteria, Model model) {
+		PageMaker maker = new PageMaker(criteria, service.totalCount(criteria));
+		List<Member> list = service.findAll(criteria);
 		model.addAttribute("list", list);
+		model.addAttribute("pageMaker", maker);
 		return "member/list";
 	}
 	
