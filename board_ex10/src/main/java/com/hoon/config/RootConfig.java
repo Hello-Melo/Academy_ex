@@ -9,6 +9,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
@@ -19,6 +20,15 @@ import com.zaxxer.hikari.HikariDataSource;
 @Configuration
 @MapperScan("com.hoon.mapper")
 public class RootConfig   {
+	
+	@Bean
+	public CommonsMultipartResolver multipartResolver() {
+		CommonsMultipartResolver resolver = new CommonsMultipartResolver(); 
+		resolver.setMaxUploadSize(5248800);
+		resolver.setMaxInMemorySize(10485760);
+		return resolver; 
+	}
+	
 	
 	@Bean
 	public MessageSource messageSource() {
