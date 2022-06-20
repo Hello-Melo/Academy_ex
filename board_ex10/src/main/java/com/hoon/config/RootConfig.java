@@ -13,6 +13,8 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
+import com.hoon.service.ReplyService;
+import com.hoon.service.ReplyServiceImpl;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -65,5 +67,5 @@ public class RootConfig   {
 		return new SessionLocaleResolver();
 	}
 	
-	
+
 }
