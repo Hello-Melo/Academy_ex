@@ -77,8 +77,22 @@ $(function () {
 		getForm.submit();
 	})
 
-	
 })
-
+/* 	$(function(){
+			
+		let bnoValue = $('input[name="bno"]').val();
+		let reply = {
+				bno : bnoValue,
+				reply : "ajax 등록 및 테스트",
+				replyer : "테스타"
+								
+		};
+		let callback = function (result) {
+			alert("결과 : " + result);
+		}
+	replyService.add(reply, callback);
+				
+	}); */
+	
 
 </script>

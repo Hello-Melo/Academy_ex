@@ -33,7 +33,6 @@ public class BoardController {
 	@GetMapping("/get")
 	public String get(Long bno, Criteria criteria, Model model) {
 		pageMaker maker = new pageMaker(criteria, service.totalCount(criteria));
-		
 		Board board = service.get(bno, criteria);
 		model.addAttribute("board", board);
 		model.addAttribute("pageMaker", maker);

@@ -1,5 +1,6 @@
 package com.hoon.model;
 
+
 public class Criteria {
 	
 	private String type;
@@ -14,6 +15,18 @@ public class Criteria {
 		this.perPageNum =10;
 	}
 	
+	
+	
+	public Criteria(int page, int perPageNum) {
+		super();
+		this.page = page;
+		this.perPageNum = perPageNum;
+	}
+
+
+
+
+
 	public int getPageStart() {
 		return (this.page-1)*perPageNum; 
 	}

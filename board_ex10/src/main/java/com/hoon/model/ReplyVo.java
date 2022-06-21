@@ -1,5 +1,6 @@
 package com.hoon.model;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
