@@ -56,7 +56,6 @@ $(function () {
 		getForm.attr("action", "delete")
 		getForm.submit();
 	})
-	
-})
 
+})
 </script>

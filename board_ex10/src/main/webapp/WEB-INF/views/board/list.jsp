@@ -110,9 +110,12 @@
 						pageForm.empty();
 						pageForm.append(pageNum);
 					}
-					
 					 $('#pageForm').submit(); 
 				});
+
+				
+				
+				
 				
 			})
 		</script>

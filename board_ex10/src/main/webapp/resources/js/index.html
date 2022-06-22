@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <li class="left clearfix" data-rno='3'>
+        <div>
+            <div class="header">
+                <strong class="primary-font">작승자</strong>
+                <small class="pull-right text-muted">2022-06-22</small>
+            </div>
+            <p>댓글 내융....</p>
+        </div>
+    </li>
+
+
+<!--  let str = '';
+str += "<li class='left' data-rno='3'><div><div class='header'>";
+str += "<strong class='primary-font'>작승자</strong>";
+str += "<small class='pull-right text-muted'>2022-06-22</small>";
+str += "</div><p>퍄퍄퍄퍄퍄퍄</p></div></li>";
+str += "<li class='left' data-rno=' "+reply.rno+" '><div><div class='header'>";
+    str += "<strong class='primary-font'>"+ reply.replyer +"</strong>";
+    str += "<small class='pull-right text-muted'>"+ reply.regData + "</small>";
+    str += "</div><p>" + reply.reply + "</p></div></li>";
+-->
+    
+</body>
+<script>
+let str = "" ;
+
+str = `
+            <li class="left clearfix" data-rno='3'>
+                <div>
+                    <div class="header">
+                        <strong class="primary-font">작승자</strong>
+                        <small class="pull-right text-muted">2022-06-22</small>
+                    </div>
+                    <p>댓글 내융....</p>
+                </div>
+            </li>
+        `
+
+
+
+        ;
+
+
+        function displayTime(timeValue) {
+		let time = JSON.stringify(timeValue).substr(1).split(",");
+        return '${time[0]년} ${time[1]}월 ${time[2]}일';
+	
+	}
+
+</script>
+
+
+</html>
