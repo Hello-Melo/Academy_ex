@@ -79,6 +79,16 @@ let replyService = (function(){
 		});
 } //update end
 	
+	
+	function get(rno, callback, error) { //파라미터 이름 rno
+		
+		$.get(contextPath+'/replies/' + rno, function(result) { //contextPath 추가
+			if(callback) callback(result);
+			}).fail(function(xhr, status, err) {
+				if(error) error(er);
+			})
+	}
+	
 	 function displayTime(timeValue) {
 			let timeArr = JSON.stringify(timeValue).substr(1).split(",");
 	        return `${timeArr[0]}년 ${timeArr[1]}월 ${timeArr[2]}일`;
@@ -91,7 +101,8 @@ let replyService = (function(){
 		getList : getList,
 		remove : remove,
 		update : update,
-		displayTime : displayTime
+		displayTime : displayTime,
+		get : get
 	};
 })();
 

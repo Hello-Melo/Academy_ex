@@ -45,11 +45,12 @@ public class BoardController {
 
 	@PostMapping("/register")
 	public String register(Board board, Errors errors, RedirectAttributes rtts) {
+		service.insert(board);
 		new BoardValidatior().validate(board, errors);
 			if (errors.hasErrors()) {
 				return "board/register";
 			}
-		return "redirect:/";
+		return "redirect:/list";
 	}
 	
 	@GetMapping("/get")
