@@ -24,7 +24,7 @@ import com.hoon.validation.BoardValidatior;
 public class BoardController {
 
 	@Autowired
-	BoardServiceImpl service;
+	BoardService service;
 
 	Board board = new Board();
 
@@ -50,8 +50,8 @@ public class BoardController {
 			if (errors.hasErrors()) {
 				return "board/register";
 			}
-		return "redirect:/list";
-	}
+		return "redirect:/board/list";
+			}
 	
 	@GetMapping("/get")
 	public String get(Long bno, Model model) {
@@ -69,5 +69,13 @@ public class BoardController {
 		service.update(board);
 		return "redirect:/board/list";
 	}
+	
+	@PostMapping("/delete")
+	public String remove(Long bno, RedirectAttributes rtts) {
+		service.delete(bno);
+		System.out.println(bno);
+		return "redirect:/board/list";
+	}
+	
 	
 }

@@ -49,9 +49,9 @@ let replyService = (function(){
 					callback(result);
 				}
 			},
-			error : function(xhr, status, er){
+			error : function(xhr, status, err){
 				if(error){
-					error(er);
+					error(err);
 				}
 			}
 		});
@@ -59,7 +59,7 @@ let replyService = (function(){
 	
 	// 댓글 수정
 	
-	function update(reply, callback, eroor){
+	function update(reply, callback, error){
 		
 		$.ajax({
 			type : 'put',
@@ -80,6 +80,7 @@ let replyService = (function(){
 } //update end
 	
 	
+	// 댓글 번호 가져오는 메서드
 	function get(rno, callback, error) { //파라미터 이름 rno
 		
 		$.get(contextPath+'/replies/' + rno, function(result) { //contextPath 추가

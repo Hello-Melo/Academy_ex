@@ -60,7 +60,7 @@
 		</update>		
 		
 		<delete id="delete">
-				delete from board_tbl  where bno=#{bno}
+				delete from board_tbl where bno = #{bno}
 		</delete>	
 
 

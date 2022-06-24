@@ -1,8 +1,7 @@
 $(function () {
 	let bnoValue = $('input[name="bno"]').val();
 	let replyUL = $('.chat');
-	
-	
+		
 	function showList(page) {
 		replyService.getList({bno : bnoValue, page : page}, function (list) {
 			let str = '';
@@ -28,6 +27,7 @@ $(function () {
 	
 	
 	let bno = $('input[name="bno"]').val();
+	
 	
 	// 모달
 	let modal = $('.modal');
@@ -66,7 +66,7 @@ $(function () {
 			})
 		})
 	
-	//모델 이벤트 처리
+	// 모델 이벤트 처리
 	$('#modalRegisterBtn').on('click', function () {
 		let test = modalInputReply.val();
 		alert(test);
@@ -87,7 +87,7 @@ $(function () {
 				modalInputReply.val(reply.reply);
 				modalInputReplyer.val(reply.replyer);
 				modalInputReplyDate.val(replyService.displayTime(reply.updateDate)).attr("readonly", "readonly");
-				modal.data("rno", reply,rno)
+				modal.data("rno", reply.rno)
 				
 				modal.find("button[id!='modalCloseBtn']").hide();
 				modalInputReplyDate.closest('div').show();
@@ -96,8 +96,34 @@ $(function () {
 				
 				modal.modal("show");
 			})
+
 	})
 		
+	
+				// 댓글 수정
+	modalMoBtn.on("click", function(e) {
+		let reply = {rno : modal.data("rno"), reply:modalInputReply.val() };
+		console.log(reply);
+		replyService.update(reply, function(result) {
+			alert(result);
+			modal.modal("hide");
+			showList(1);
+		})
+	})
+	
+	//댓글 삭제
+	
+	modalRemoveBtn.on("click", function(e) {
+		let rno = modal.data("rno");
+		replyService.remove(rno, function(result) {
+			alert(result);
+			modal.modal("hide");
+			showList(1);
+			
+		})
+		
+	})
+	
 		
 })
 

@@ -145,12 +145,11 @@ $(function () {
 	})
 	
 		$('#getForm .remove').on('click', function () {
-		getForm.attr('method', 'post');
-		getForm.attr("action","remove" );
-		getForm.submit();
+			getForm.append($('#bno'));
+			getForm.attr('method', 'post');
+			getForm.attr("action","delete" );
+			getForm.submit();
 	})
-	
-	
 	
 })	
 	
