@@ -69,7 +69,6 @@ public class ReplyMapperTest {
 		
 	}
 	
-	
 	@Test
 	@Ignore
 	public void listTest() {
