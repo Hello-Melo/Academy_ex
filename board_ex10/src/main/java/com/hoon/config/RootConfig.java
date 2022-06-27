@@ -8,7 +8,10 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
@@ -21,6 +24,8 @@ import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
 @MapperScan("com.hoon.mapper")
+@EnableAspectJAutoProxy
+@EnableTransactionManagement
 public class RootConfig   {
 	
 	@Bean
@@ -66,5 +71,9 @@ public class RootConfig   {
 		return new SessionLocaleResolver();
 	}
 	
+	@Bean
+	public DataSourceTransactionManager txManager() {
+		return new DataSourceTransactionManager(dataSource());
+	}
 
 }

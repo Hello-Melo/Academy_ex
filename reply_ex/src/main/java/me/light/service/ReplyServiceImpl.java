@@ -14,7 +14,7 @@ import me.light.model.ReplyVo;
 @AllArgsConstructor
 public class ReplyServiceImpl implements ReplyService {
 
-	//autowired 대신 allargs 어노테이션 써줘도 똑같음!
+	// autowired 대신 allargs 어노테이션 써줘도 똑같음!
 	ReplyMapper mapper;
 
 	@Override
@@ -41,6 +41,5 @@ public class ReplyServiceImpl implements ReplyService {
 	public int register(ReplyVo vo) {
 		return mapper.insert(vo);
 	}
-	
 
 }

@@ -10,11 +10,13 @@ import me.light.model.ReplyVo;
 public interface ReplyService {
 
 	ReplyVo get(Long bno);
+
 	void remove(Long bno);
+
 	int modify(ReplyVo replyVo);
+
 	List<ReplyVo> getList(Criteria cri, Long bno);
+
 	int register(ReplyVo vo);
-	
-	
-	
+
 }
