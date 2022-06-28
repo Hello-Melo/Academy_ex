@@ -83,6 +83,11 @@
   댓글 등록
 </button>
 
+<div>
+
+댓글 수 : ${board.replyCnt }
+</div>
+
 <!-- 댓글 -->
 <div class="modal fade" id="replyForm" tabindex="-1" role="dialog"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">

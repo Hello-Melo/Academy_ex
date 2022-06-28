@@ -44,20 +44,28 @@ public class CkeditorFileUploadController {
 
 					try {
 						//파일 이름 설정
-						String fileName = file.getName();
+						String fileName = file.getOriginalFilename();
 						//바이트 타입설정
 						byte[] bytes;
 						//파일을 바이트 타입으로 변경
 						bytes = file.getBytes();
 						//파일이 실제로 저장되는 경로 
-						String uploadPath = request.getServletContext().getRealPath("/resources/ckimage/");
+						String uploadPath = request.getServletContext().getRealPath("/resources/images/");
+						System.out.println("저장 경로 : "+uploadPath);
 						//저장되는 파일에 경로 설정
 						File uploadFile = new File(uploadPath);
 						if (!uploadFile.exists()) {
 							uploadFile.mkdirs();
 						}
+						//확장자 구하기
+						int lastDotIdx = fileName.lastIndexOf(".");
+						System.out.println("위치 : "+lastDotIdx);
+					
+						String ext = fileName.substring(lastDotIdx+1);
+						System.out.println(ext);
+						
 						//파일이름을 랜덤하게 생성
-						fileName = UUID.randomUUID().toString();
+						fileName = UUID.randomUUID().toString() +"."+ ext;
 						//업로드 경로 + 파일이름을 줘서  데이터를 서버에 전송
 						uploadPath = uploadPath + "/" + fileName;
 						out = new FileOutputStream(new File(uploadPath));
@@ -68,7 +76,7 @@ public class CkeditorFileUploadController {
 						response.setContentType("text/html");
 						
 						//파일이 연결되는 Url 주소 설정
-						String fileUrl = request.getContextPath() + "/resources/ckimage/" + fileName;
+						String fileUrl = request.getContextPath() + "/resources/images/" + fileName;
 						
 						//생성된 jason 객체를 이용해 파일 업로드 + 이름 + 주소를 CkEditor에 전송
 						json.addProperty("uploaded", 1);

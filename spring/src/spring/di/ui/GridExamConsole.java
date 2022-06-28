@@ -21,4 +21,9 @@ public class GridExamConsole implements ExamConsole {
 		System.out.println("total is " + exam.total() + ", avg is " + exam.avg());
 	}
 
+	@Override
+	public void setExam(Exam exam) {
+		this.exam = exam;
+	}
+
 }

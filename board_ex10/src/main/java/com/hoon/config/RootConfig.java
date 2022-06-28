@@ -36,6 +36,7 @@ public class RootConfig   {
 		return resolver; 
 	}
 	
+	
 	@Bean
 	public MessageSource messageSource() {
 		ReloadableResourceBundleMessageSource source
