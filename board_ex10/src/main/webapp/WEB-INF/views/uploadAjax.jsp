@@ -8,13 +8,19 @@
 </head>
 <body>
 
-<h2>파일 업로드</h2>
-<div class="uploadDiv">
-	<input type="file" name="uploadFile" multiple>
-</div>
-
-	<button id="uploadBtn">submit</button>
-
+		<h2>파일 업로드</h2>
+		<div class="uploadDiv">
+			<input type="file" name="uploadFile" multiple>
+		</div>
+		
+			<button id="uploadBtn">submit</button>
+		
+		<div class="uploadResult">
+				<ul>
+						
+				
+				</ul>
+		</div>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -38,7 +44,7 @@
 			return true;
 		}
 		
-		
+		let cloneObj = $('.uploadDiv').clone();
 		
 		$('#uploadBtn').on('click', function(e) {
 			let formData = new FormData();
@@ -61,10 +67,22 @@
 				type : 'post',
 				success : function(result) {
 					alert('uploaded');
+					
+					$('.uploadDiv').html(cloneObj.html());
+					showUploadFile(result);
 				}
 			})
 			
 		})
+		let uploadResult = $('.uploadResult ul');
+		function showUploadFile(uploadResultArr) {
+			let str = "";
+			$(uploadResultArr).each(function(i, obj){
+				str += "<li>" + obj.fileName + "</li>"
+			})
+			uploadResult.append(str);
+		}
+		
 	})
 </script>
 
