@@ -46,7 +46,6 @@
 		${pageMaker.criteria.type}<br> 키어드 :
 		${pageMaker.criteria.keyword}<br>
 
-
 		<button class="btn btn-warning remove">삭줴</button>
 		<button class="btn btn-danger update">수쟝</button>
 		<button class="btn btn-primary list">목록</button>

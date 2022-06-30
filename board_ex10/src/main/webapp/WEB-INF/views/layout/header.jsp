@@ -49,6 +49,9 @@
          <li class="nav-item">
           <a class="nav-link" href="${contextPath }/member/list">회원목록</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="${contextPath }/uploadAjax">파일업로드</a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown link
