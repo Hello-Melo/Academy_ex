@@ -143,21 +143,23 @@ public class uploadController {
 		return new ResponseEntity<Resource>(resource, headers,  HttpStatus.OK);
 	}
 	
+	//파일 삭제
 	@PostMapping("/deleteFile")
 	@ResponseBody
 	public ResponseEntity<String> deleteFile(String fileName, String type){
 		File file;
 		
 		try {
+			//일반파일, 이미지 썸네일 삭제
 			file = new File("c:\\upload\\" + URLDecoder.decode(fileName, "utf-8"));
 			file.delete();
-			if(type.equals("image")) {
+			if(type.equals("image")) {// 이미지 삭제 조건
 				String largeFileName = file.getAbsolutePath().replace("s_", "");
 				file = new File(largeFileName);
 				file.delete();
 		}
 		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+			e.printStackTrace(); //만약 ㅇ인코딩 예외가 뜨면 요걸 반환
 			return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<String>("deleted", HttpStatus.OK);
