@@ -53,14 +53,14 @@
 
 	<!-- 댓글 -->
 
-	<div class="row">
+	<div class="row mt-5">
 		<div class="col-lg-12">
-			<div class="panel panel-default">
-				<div class="panel-heading">
+			<div class="card card-default">
+				<div class="card-heading">
 					<h4 class="test">댓글을 달아주세여</h4>
 				</div>
 
-				<div class="panel-body">
+				<div class="card-body">
 					<ul class="chat">
 						<!--  start reply-->
 						
@@ -73,7 +73,6 @@
 		<!--  /col-lg12 -->
 	</div>
 	<!--  /row-->
-
 </div>
 
 
@@ -86,6 +85,8 @@
 
 댓글 수 : ${board.replyCnt }
 </div>
+
+
 
 <!-- 댓글 -->
 <div class="modal fade" id="replyForm" tabindex="-1" role="dialog"
@@ -123,6 +124,21 @@
 	</div>
 </div>
 
+	<div class="row my-5">
+  			<div class="col-lg-12">
+  				<div class="card">
+  					<div class="card-header">
+  						<h4>파일 첨부 내용</h4>	
+  					</div>
+  					<div class="card-body">
+  						<div class="uploadResult">
+  							<ul class="list-group">
+  							</ul>
+  						</div>
+  					</div> <!-- panel body -->
+  				</div> <!-- panel end-->
+  			</div><!-- col end -->
+  		</div><!-- row end -->
 
 
 <%@ include file="/WEB-INF/views/layout/footer.jsp"%>

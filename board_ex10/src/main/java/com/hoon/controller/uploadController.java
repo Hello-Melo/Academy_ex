@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.hoon.model.AttachFileDTO;
+import com.hoon.model.BoardAttachVo;
 
 import net.coobird.thumbnailator.Thumbnailator;
 
@@ -62,8 +62,8 @@ public class uploadController {
 
 	@PostMapping(value = "/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public ResponseEntity<List<AttachFileDTO>> uploadAjaxAction(MultipartFile[] uploadFile) {
-		List<AttachFileDTO> list = new ArrayList<AttachFileDTO>(); // 리스트 생성
+	public ResponseEntity<List<BoardAttachVo>> uploadAjaxAction(MultipartFile[] uploadFile) {
+		List<BoardAttachVo> list = new ArrayList<BoardAttachVo>(); // 리스트 생성
 
 		File uploadPath = new File("c:\\upload", getFolder());
 		if (!uploadPath.exists()) {
@@ -71,9 +71,9 @@ public class uploadController {
 		}
 
 		for (MultipartFile file : uploadFile) {
-			AttachFileDTO attachFileDTO = new AttachFileDTO();
+			BoardAttachVo attachVO = new BoardAttachVo();
 			String uploadFilename = file.getOriginalFilename();
-			attachFileDTO.setFileName(uploadFilename); // uuid 생성전
+			attachVO.setFileName(uploadFilename); // uuid 생성전
 
 			UUID uuid = UUID.randomUUID();
 			uploadFilename = uuid.toString() + "_" + uploadFilename;
@@ -81,19 +81,19 @@ public class uploadController {
 			File saveFile = new File(uploadPath, uploadFilename);
 			try {
 				file.transferTo(saveFile);
-				attachFileDTO.setUuid(uuid.toString());
-				attachFileDTO.setUploadPath(getFolder());
+				attachVO.setUuid(uuid.toString());
+				attachVO.setUploadPath(getFolder());
 				if (checkImageFile(saveFile)) {
-					attachFileDTO.setImage(true);
+					attachVO.setFileType(true);
 					FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, "s_" + uploadFilename));
 					Thumbnailator.createThumbnail(file.getInputStream(), thumbnail, 100, 100);
 				}
-				list.add(attachFileDTO);
+				list.add(attachVO);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		return new ResponseEntity<List<AttachFileDTO>>(list, HttpStatus.OK);
+		return new ResponseEntity<List<BoardAttachVo>>(list, HttpStatus.OK);
 	}
 
 	//썸네일 데이터 전송하기
@@ -166,7 +166,7 @@ public class uploadController {
 	}
 	
 	
-	
+	//폴더 생성 메서드
 	private String getFolder() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String str = sdf.format(new Date());

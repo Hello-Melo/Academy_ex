@@ -26,6 +26,8 @@ public class Board {
 	private int replyCnt;
 	
 	private List<BoardAttachVo> attachList;
+	// attachList[0].uuid;
+	//attachList[1].writer;
 	
 	
 }

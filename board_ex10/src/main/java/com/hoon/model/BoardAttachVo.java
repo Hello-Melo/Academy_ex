@@ -16,8 +16,8 @@ public class BoardAttachVo {
 	private String uuid;
 	private String uploadPath;
 	private String fileName;
-	private String fileType;
-	private long bno;
+	private boolean fileType;
+	private Long bno;
 	
 
 }
