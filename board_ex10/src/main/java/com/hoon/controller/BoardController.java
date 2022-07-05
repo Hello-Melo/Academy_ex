@@ -1,5 +1,9 @@
 package com.hoon.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.apache.tomcat.util.log.UserDataHelper.Mode;
@@ -50,7 +54,7 @@ public class BoardController {
 
 	@PostMapping("/register")
 	public String register(Board board, Errors errors, RedirectAttributes rtts) {
-		  service.insert(board);
+		service.insert(board);
 //		  new BoardValidatior().validate(board, errors);
 //		  if (errors.hasErrors()) {
 //			  return "board/register"; 
@@ -65,7 +69,8 @@ public class BoardController {
 	}
 
 	@GetMapping("/update")
-	public String updateForm() {
+	public String updateForm(Model model) {
+		
 		return "board/update";
 	}
 
@@ -77,17 +82,44 @@ public class BoardController {
 
 	@PostMapping("/delete")
 	public String remove(Long bno, RedirectAttributes rtts) {
+		List<BoardAttachVo> list = service.getAttachList(bno);
+		deleteFiles(list);
 		service.delete(bno);
+		
 		System.out.println(bno);
 		return "redirect:/board/list";
 	}
-	
-	@GetMapping(value="/getAttachList", produces = MediaType.APPLICATION_JSON_VALUE)
+
+	@GetMapping(value = "/getAttachList", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public ResponseEntity<List<BoardAttachVo>> getAttachList(Long bno){
+	public ResponseEntity<List<BoardAttachVo>> getAttachList(Long bno) {
 		List<BoardAttachVo> attachList = service.getAttachList(bno);
-		
-		return new ResponseEntity<>(attachList, HttpStatus.OK) ;
+
+		return new ResponseEntity<>(attachList, HttpStatus.OK);
+	}
+
+	private void deleteFiles(List<BoardAttachVo> list) {
+		if (list == null || list.size() == 0)
+			return;
+
+		list.forEach(attach -> {
+			// uploadPath, uuid, fileName (내가 설정했던 주소 형식을 그대로 써주는것!)
+
+			Path file = Paths.get("c:/upload/" + attach.getUploadPath() + "/" + attach.getUuid() + "_" + attach.getFileName());
+			System.out.println(file);
+			try {
+				// 파일이 있을시 파일을 삭제, 없을시 무시
+				Files.deleteIfExists(file);
+				// 만약 파일 형태가 이미지 파일 형태라면 썸네일도 삭제하라는 조건문!
+				if (Files.probeContentType(file).startsWith("image")) {
+					Path thumbnail = Paths.get("c:/upload/" + attach.getUploadPath() + "/s_" + attach.getUuid() + "_" + attach.getFileName());
+					System.out.println(thumbnail);
+					Files.deleteIfExists(thumbnail);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		});
 	}
 
 }

@@ -122,6 +122,7 @@ $(function () {
 		})
 	})
 	
+	//파일 리스트 블러오기
 	$.getJSON(contextPath+"/board/getAttachList", {bno : bnoValue}, function(attachList) {
 		let str ="";
 		$(attachList).each(function(i, obj){

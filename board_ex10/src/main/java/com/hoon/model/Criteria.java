@@ -23,10 +23,6 @@ public class Criteria {
 		this.perPageNum = perPageNum;
 	}
 
-
-
-
-
 	public int getPageStart() {
 		return (this.page-1)*perPageNum; 
 	}

@@ -82,7 +82,7 @@
 				
 					// 파일이름에 다운로드 링크걸기!
 				
-					str += "<li class='list-group-item' data-path=' "+obj.uploadPath+"' ";
+					str += "<li class='list-group-item' data-path='"+obj.uploadPath+"'";
 					str += "data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.fileType+"'>";
 					str += "<img src = '${pageContext.request.contextPath}/resources/images/attach.png' style='width:30px'>"
 					str += "<a href='${pageContext.request.contextPath}/download?fileName=" + fileCellPath +" '>" + obj.fileName  +"</a>"
@@ -182,10 +182,8 @@
 					success : function(result) {
 						alert(result);
 						targetLi.remove();
-						
 					}
 				})
-				
 			})
 			
 			
