@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -25,7 +24,7 @@ public class FileCheckTask {
 	private BoardAttachMapper attachMapper;
 	
 
-	@Scheduled(cron="0 * * * * * ")
+	@Scheduled(cron="0 0 2 * * * ")
 	public void checkFiles() {
 		System.out.println("되남?");
 		
@@ -43,18 +42,19 @@ public class FileCheckTask {
 		
 		System.out.println(fileListPaths);
 		
-		File targetDir = Paths.get("c:/upload/", getFolderToday()).toFile();
+		File targetDir = Paths.get("c:/upload/", getFolderYesterDay()).toFile();
 		File[] removeFiles = targetDir.listFiles(file-> fileListPaths.contains(file.toPath())==false);
 		
 		System.out.println(Arrays.toString(removeFiles));
-		Arrays.asList(removeFiles).stream().forEach(f->f.delete());
+		Arrays.asList(removeFiles).forEach(f->f.delete());
 		
 	}
 
 
-	private String getFolderToday() {
+	private String getFolderYesterDay() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar cal =  Calendar.getInstance();
+		cal.add(Calendar.DATE, -1);
 		return sdf.format(cal.getTime()).replace("-", File.separator);
 	}
 	
