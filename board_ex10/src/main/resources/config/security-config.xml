@@ -10,20 +10,29 @@
 		<property name="contents" value="importResource 테스트"></property>
 	</bean>
 		
+		<!--  각 핸들러를 만들어준 후 반드시 스프링빈 등록을 해줘야 실행이 된다! 중요! -->
+		<bean id="myAccessDeniedHandler" class="com.hoon.security.MyAccessDeniedHandler" />
+		<bean id="mySuccessHandler" class="com.hoon.security.MySuccessHandler" />
+		
 		
 		
 		<sec:http>
+		<!--  여기서 설정된 권한을 선언해줄 수 있다. -->
 			<sec:intercept-url pattern="/security/all" access="permitAll" />
 			<sec:intercept-url pattern="/security/member" access="hasRole('ROLE_MEMBER')" />
-			<sec:intercept-url pattern="/security/admin" access="hasRole('ROLE_MEMBER')" />
-			<sec:form-login/>
+			<sec:intercept-url pattern="/security/admin" access="hasRole('ROLE_ADMIN')" />
+			<sec:form-login login-page="/customLogin" authentication-success-handler-ref="mySuccessHandler"  />
+			<sec:logout logout-url="/myLogout" invalidate-session="true"  />
+			<!--   <sec:access-denied-handler error-page="accessError" />-->
+		  <sec:access-denied-handler ref="myAccessDeniedHandler"/>
 		</sec:http>
 
 		<sec:authentication-manager>
 			<sec:authentication-provider>
 				<sec:user-service>
+				<!--  여기서 각 회원별로 권한을 선언해줄 수 있다. -->
 					<sec:user name="okseungHoon" authorities="ROLE_MEMBER" password="{noop}1234"/>
-					<sec:user name="superHoon" authorities="ROLE_MEMBER" password="{noop}1234"/>	
+					<sec:user name="superHoon" authorities="ROLE_MEMBER, ROLE_ADMIN" password="{noop}1234"/>	
 				</sec:user-service>
 			
 			</sec:authentication-provider>

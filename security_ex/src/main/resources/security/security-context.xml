@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+		
+<bean id="demo1" class="security_ex.com.hoon.model.Demo">
+	<constructor-arg name="kill" value="생성자 이용"></constructor-arg>
+</bean>		
+<bean id="demo2" class="security_ex.com.hoon.model.Demo">
+	<property name="kill" value="세터이용"></property>
+</bean>	
+		
+</beans>

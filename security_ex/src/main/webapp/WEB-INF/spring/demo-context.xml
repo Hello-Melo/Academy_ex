@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+		
+		<bean id="demo3" class="security_ex.com.hoon.model.Demo">
+			<property name="kill" value="webapp 아래 파일불러오기" />
+		</bean>	
+			
+
+
+</beans>
