@@ -13,7 +13,7 @@
 		<!--  각 핸들러를 만들어준 후 반드시 스프링빈 등록을 해줘야 실행이 된다! 중요! -->
 		<bean id="myAccessDeniedHandler" class="com.hoon.security.MyAccessDeniedHandler" />
 		<bean id="mySuccessHandler" class="com.hoon.security.MySuccessHandler" />
-		
+		<bean id="myNoopPasswordEncoder" class="com.hoon.security.MyNoopPasswordEncoder"  />
 		
 		
 		<sec:http>
@@ -29,12 +29,13 @@
 
 		<sec:authentication-manager>
 			<sec:authentication-provider>
-				<sec:user-service>
-				<!--  여기서 각 회원별로 권한을 선언해줄 수 있다. -->
+			<!-- 	<sec:user-service>
+				 여기서 각 회원별로 권한을 선언해줄 수 있다.
 					<sec:user name="okseungHoon" authorities="ROLE_MEMBER" password="{noop}1234"/>
 					<sec:user name="superHoon" authorities="ROLE_MEMBER, ROLE_ADMIN" password="{noop}1234"/>	
-				</sec:user-service>
-			
+				</sec:user-service> -->
+				<sec:jdbc-user-service data-source-ref="dataSource"  />
+				<sec:password-encoder ref="myNoopPasswordEncoder" />
 			</sec:authentication-provider>
 		
 		</sec:authentication-manager>		 
