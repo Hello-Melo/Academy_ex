@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.hoon.model.Criteria;
 import com.hoon.model.Member;
+import com.hoon.model.MemberVo;
 
 public interface MemberMapper {
 
@@ -15,4 +16,7 @@ public interface MemberMapper {
 	int totalCount(Criteria criteria);
 	
 	Member findByEmail(String email);
+	
+	MemberVo read(String userId);
+	
 }

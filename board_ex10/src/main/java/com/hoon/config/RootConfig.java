@@ -9,6 +9,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -29,10 +30,14 @@ import com.zaxxer.hikari.HikariDataSource;
 @EnableAspectJAutoProxy
 @EnableTransactionManagement
 @EnableScheduling
-@ImportResource(value= {
-			"classpath:config/security-config.xml"
-		
-})
+/* xml 땡겨올때는 임포트리소스로 땡기기
+ * @ImportResource(value= { "classpath:config/security-config.xml"
+ * 
+ * })
+ * 
+ * 자바 설정을 땡겨 올때는 임포트 어노테이션을 사용한다!
+ */
+/* @Import(value= {SecurityConfig.class}) */
 public class RootConfig   {
 	
 	@Bean
