@@ -2,7 +2,7 @@
 let replyService = (function(){
 	
 	//댓글 등록
-	function add(reply, callback){
+	function add(reply, callback, error){
 			
 			$.ajax({
 				type : 'post',

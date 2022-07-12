@@ -5,12 +5,10 @@
 
 
 	<div class="container">
-	
-		<sec:authentication property="principal.memberVo.userId" var="userId"/>
-		<h2>회원 페이지</h2>
+			<c:if test="${not empty member }">
+			${member }
+		</c:if>
 		
-		<a href="${contextPath }/myLogout">로그아웃하러 가자</a>
-		<a href="${contextPath }/anno/myPage/${userId}">마이 페이지</a>
 	</div>
 
 	

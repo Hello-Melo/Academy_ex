@@ -10,14 +10,17 @@
 	  		</div>
   			<form action="${contextPath }/member/login" method="post"> <!--  액션과 메서드는 스프링 시큐리티의 고정값 -->
 					<div class="form-group">
-					  	<input type="text" name="loginId" placeholder="아이디" class="form-control">
+					  	<input type="text" name="loginId" placeholder="아이디" class="form-control" value="${loginId}">
 					</div>
 					<div class="form-group">
-					  	<input type="password" name="loginPw" placeholder="비밀번호" class="form-control">
+					  	<input type="password" name="loginPw" placeholder="비밀번호" class="form-control" value="${loginPw}">
 					</div>
 					<div class="form-group">
+						<input type="checkbox" name="remember-me" >
 						<label>Remember me</label>
-						<input type="checkbox" name="remember-me" class="form-control">
+					</div>
+					<div class="error_area">
+						${errorMessage}
 					</div>
 					<div class="form-group">
 					  	<button class="btn btn-primary form-control">로그인</button>

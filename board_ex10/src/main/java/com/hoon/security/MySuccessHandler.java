@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.stereotype.Component;
 //이미 늦었따. AuthenticationSuccessHandler 로 임플리먼트해야함
+@Component
 public class MySuccessHandler implements AuthenticationSuccessHandler{
 
 	// 로그인성공 핸들러

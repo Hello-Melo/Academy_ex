@@ -6,6 +6,7 @@
 	<h2>글 내용 수정</h2>
 
 	<form action="${pageContext.request.contextPath}/board/update" method="post" enctype="multipart/form-data" id="modifyForm">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token }"> 
 		<input type="hidden" name="bno" value="${param.bno}">
 		제목 : <input type="text" name="title" value="${param.title }"><br>
 		작성자 : <input type="text" name="writer" value="${param.writer }"><br>

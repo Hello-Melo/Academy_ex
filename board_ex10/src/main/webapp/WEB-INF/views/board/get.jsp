@@ -22,6 +22,9 @@
 
 <div class=container>
 	<form id="getForm">
+			<!--  cjrf 이름을 붙여서 토큰임을 명시. 이를 각 POST를 담당하는 폼 태그에 넣으면
+			삭제, 둥록, 수정등이 정상작동-->
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token }"> 
 		<h2>헬로 멜로</h2>
 
 		<p>제목 : ${board.title }</p>

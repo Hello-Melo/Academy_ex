@@ -11,6 +11,7 @@
 <div class="container">
 
 		<form:form action="${contextPath }/board/register" path="register" modelAttribute="board" id="registerForm">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token }"> 
 			<div class="form-group">
 				제목 : <form:input type= "text" path ="title" /><br>
 						<form:errors path="title" class="error" element="div" /><br>
