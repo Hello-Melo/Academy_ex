@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-       <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	<%@ include file="/WEB-INF/views/layout/header.jsp" %>
    <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-  <%@ include file="/WEB-INF/views/layout/header.jsp" %>
+       <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 		<div class="jumbotron">
-			<h2>글쓰기게쉬푸ㅏㄴ!</h2>
+	<sec:authentication property="principal.memberVo" var="memberVo"/>
+	<sec:authentication property="principal.username" var="writer"/>
+					<h2>글쓰기게쉬푸ㅏㄴ!</h2>
 		</div>
 
 <div class="container">
@@ -21,7 +23,7 @@
 				내용 : <form:textarea rows="20" cols="130" path="contents"  /><br>
 						</div>
 						<div class="form-group">
-				작성자 : <form:input type= "text" path ="writer"  />
+				작성자 : <form:input type= "text" name="writer" path ="writer" value="${writer }" readonly="readonly" />
 							<form:errors path="writer" element="div" /><br>
 						</div>
 			 	<div class="d-flex justify-content-end"><button class="btn btn-secondary">등록</button></div>

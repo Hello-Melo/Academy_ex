@@ -25,9 +25,11 @@ public class BoardServiceImpl implements BoardService {
 	public List<Board> getList(Criteria criteria) {
 		return mapper.getList(criteria);
 	}
-
+	
+	@Transactional
 	@Override
-	public Board findByBno(Long bno) {
+	public Board findByBno(Long bno, boolean isAddCount) {
+		if(isAddCount==true) {mapper.addViewCount(bno);}
 		return mapper.findByBno(bno);
 	}
 
@@ -44,9 +46,9 @@ public class BoardServiceImpl implements BoardService {
 
 	@Transactional
 	@Override
-	public void update(Board board) {
+	public void update(Board board, boolean b) {
 		attachMapper.deleteAll(board.getBno());
-		mapper.update(board);
+		mapper.update(board, false);
 		if(board.getAttachList() != null) {
 		board.getAttachList().forEach(attach -> {
 			attach.setBno(board.getBno());

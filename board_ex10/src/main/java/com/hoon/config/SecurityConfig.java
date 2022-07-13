@@ -13,11 +13,15 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
+
+import com.hoon.security.MyAccessDeniedHandler;
+import com.hoon.security.MySuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -65,7 +69,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.addFilterBefore(filter, CsrfFilter.class);
 		
 		//csrf 로 해당 연결을 금지시키는걸 무시하는것 
-		http.csrf().ignoringAntMatchers("/uploadAjaxAction", "/deleteFile", "/replies/**");
+		http.csrf().ignoringAntMatchers("/uploadAjaxAction", "/deleteFile");
 		
 		// 해당 역할을 가진 룰을 각각의 해당 리크에 연결
 		http.authorizeRequests()
@@ -79,7 +83,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.passwordParameter("loginPw")
 				.loginPage("/customLogin")
 				.loginProcessingUrl("/member/login")
-				.successHandler(loginSuccessHandler)
+				//.successHandler(loginSuccessHandler)
 				.failureHandler(failureHandler);
 		
 		//remember me는 persistanttokenresositonry 타입을 받는 변수. 맨 아래는 유효시간
@@ -93,6 +97,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.invalidateHttpSession(true)
 				.deleteCookies("remember-me", "JSESSION_ID");
 		
+		http.exceptionHandling()
+				.accessDeniedHandler( new MyAccessDeniedHandler());
 	}
 	
 }

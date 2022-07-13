@@ -4,16 +4,24 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.log.UserDataHelper.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,6 +55,7 @@ public class BoardController {
 		return "board/list";
 	}
 
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/register")
 	public String registerForm(Board board, Model model) {
 		return "board/register";
@@ -63,25 +72,51 @@ public class BoardController {
 	}
 
 	@GetMapping("/get")
-	public String get(Long bno, Model model) {
-		model.addAttribute("board", service.findByBno(bno));
+	public String get(Long bno, Model model, 
+			@CookieValue(required = false) Cookie viewCount, 
+			 HttpServletRequest request, HttpServletResponse response) {
+		boolean isAddCount = false;
+		if(viewCount != null) {
+			// 이름이 viewcont 쿠키가 있을때
+			String[] viewed = viewCount.getValue().split("/"); // 쿠키값 문자열을 배열로 선언
+			System.out.println(viewed.toString());
+			//ccontains메서드 사용을 위해 리스트 컬렉션으로 변환
+			List<String> viewedList = Arrays.stream(viewed).collect(Collectors.toList());
+					if(!viewedList.contains(bno.toString())) {//조회한 게시물 번호가 없다면
+						viewCount.setValue(viewCount.getValue()+bno+"/"); //기존 쿠키값 조회한게시물
+						response.addCookie(viewCount);//쿠키 없데이트
+						isAddCount = true;
+					}
+			}	else {
+			//쿠키가 없을때
+			Cookie cookie = new Cookie("viewCount", bno + "/");
+			cookie.setMaxAge(60*60*24);
+			response.addCookie(cookie);
+			isAddCount = true;
+			}
+		//두번째 인수는 조회수 증가 여부
+		model.addAttribute("board", service.findByBno(bno, isAddCount));
 		return "board/get";
 	}
-
-	@GetMapping("/update")
-	public String updateForm(Model model) {
 		
+	
+	@PreAuthorize("isAuthenticated()")
+	@GetMapping("/update")
+	public String updateForm(Long bno, Model model) {
+		model.addAttribute("board", service.findByBno(bno, false));
 		return "board/update";
 	}
 
+	@PreAuthorize("isAuthenticated() and principal.username == #board.writer")
 	@PostMapping("/update")
 	public String update(Board board, RedirectAttributes rtts) {
-		service.update(board);
+		service.update(board, false);
 		return "redirect:/board/list";
 	}
 
+	@PreAuthorize("isAuthenticated() and principal.username == #writer")
 	@PostMapping("/delete")
-	public String remove(Long bno, RedirectAttributes rtts) {
+	public String remove(Long bno, RedirectAttributes rtts, String writer) {
 		List<BoardAttachVo> list = service.getAttachList(bno);
 		deleteFiles(list);
 		service.delete(bno);
