@@ -35,6 +35,7 @@ public class ServletConfig implements WebMvcConfigurer {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
 	
+	//validation or check
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new TestInterceptor())
@@ -47,6 +48,7 @@ public class ServletConfig implements WebMvcConfigurer {
 		
 	}
 	
+	// ckeditor bean 술
 	@Bean
 	public MultipartResolver multipartResolver() {
 		StandardServletMultipartResolver resolver 

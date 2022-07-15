@@ -24,6 +24,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 		return new String[] {"/"};
 	}
 
+	// 필터 처리
     @Override
     protected Filter[] getServletFilters() {
     	CharacterEncodingFilter filter = new CharacterEncodingFilter();
@@ -32,7 +33,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
     	return new Filter[] {filter};
     }
     
-    
+    //ckeditor 파일업로드 오버라이딩 메서드
     @Override
     protected void customizeRegistration(Dynamic registration) {
     	MultipartConfigElement multipartConfigElement
