@@ -25,5 +25,4 @@ public class ReplyVo {
 	private LocalDateTime regDate;
 	private LocalDateTime updateDate; 
 	
-	
 }
