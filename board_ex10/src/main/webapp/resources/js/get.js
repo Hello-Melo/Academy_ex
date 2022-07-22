@@ -12,7 +12,7 @@ $(function () {
 				                <div>
 				                    <div class="header">
 				                        <strong class="primary-font">${r.replyer}</strong>
-				                        <small class="pull-right text-muted">${replyService.displayTime(r.updateDate)}</small>
+				                        <small class="pull-right text-muted">${replyService.displayTime(r.regDate)}</small>
 				                        
 				                    </div>
 				                    <p>${r.reply}</p>
@@ -61,7 +61,6 @@ $(function () {
 				alert(result);
 				modal.find('input').val('');
 				modal.modal('hide');
-				
 				showList(1);
 			})
 		})
@@ -86,7 +85,7 @@ $(function () {
 				console.log(reply);
 				modalInputReply.val(reply.reply);
 				modalInputReplyer.val(reply.replyer);
-				modalInputReplyDate.val(replyService.displayTime(reply.updateDate)).attr("readonly", "readonly");
+				modalInputReplyDate.val(replyService.displayTime(reply.regDate)).attr("readonly", "readonly");
 				modal.data("rno", reply.rno)
 				
 				modal.find("button[id!='modalCloseBtn']").hide();
@@ -100,7 +99,7 @@ $(function () {
 	})
 		
 	
-				// 댓글 수정
+	// 댓글 수정
 	modalMoBtn.on("click", function(e) {
 		let reply = {rno : modal.data("rno"), reply:modalInputReply.val() };
 		console.log(reply);
