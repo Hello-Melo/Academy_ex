@@ -68,6 +68,7 @@ public class BoardController {
 //		  if (errors.hasErrors()) {
 //			  return "board/register"; 
 //			  }
+		
 		return "redirect:/board/list";
 	}
 

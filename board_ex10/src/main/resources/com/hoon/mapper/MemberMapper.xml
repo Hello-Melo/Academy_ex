@@ -57,7 +57,7 @@
 	<select id="findAll" resultType="com.hoon.model.Member">
 		select * from member_tbl
 		<include refid="search" />
-			 order by id desc
+			 order by userId desc
 			  limit #{pageStart}, #{perPageNum};
 	</select>
 
@@ -79,15 +79,15 @@
 		userName = #{userName},
 		email = #{email},
 		password = #{password}
-		where id = #{id}
+		where userId = #{userId}
 	</update>
 
 	<select id="findById" resultType="com.hoon.model.Member">
-		select * from member_tbl where id=#{id}
+		select * from member_tbl where userId=#{userId}
 	</select>
 
 	<delete id="delete">
-		delete from member_tbl where id=#{id}
+		delete from member_tbl where userId=#{userId}
 	</delete>
 
 	<select id="findByEmail" resultType="com.hoon.model.Member">

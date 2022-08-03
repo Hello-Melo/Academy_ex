@@ -76,6 +76,7 @@
 			})
 			
 		})
+		
 		let uploadResult = $('.uploadResult ul');
 		function showUploadFile(uploadResultArr) {
 			let str = "";
@@ -107,6 +108,8 @@
 			})
 			uploadResult.append(str);
 		}
+		
+		
 		uploadResult.on('click', 'span', function(e) {
 			console.log($(this).data('file'));
 			alert('삭제 가즈아');

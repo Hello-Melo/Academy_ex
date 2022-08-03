@@ -20,8 +20,10 @@ public class MemberVo {
 	private String userId;
 	private String userPw;
 	private String userName;
+	
 	private boolean enabled;
 	private LocalDateTime regDate;
 	private LocalDateTime updateDate;
+	
 	private List<AuthVO> authList;
 }
